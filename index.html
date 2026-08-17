@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<title>Mi Gestor de Modelos 3D</title>
+<style>
+body { font-family: Arial, sans-serif; padding: 20px; }
+h1 { color: #333; }
+#modelList li { margin-bottom: 10px; }
+</style>
+</head>
+<body>
+<h1>Mi Gestor Privado de Modelos 3D</h1>
+<form id="uploadForm">
+  <input type="file" id="modelFile" accept=".glb" />
+  <button type="submit">Subir Modelo</button>
+</form>
+<h2>Modelos Subidos:</h2>
+<ul id="modelList"></ul>
+
+<script>
+const form = document.getElementById('uploadForm');
+const list = document.getElementById('modelList');
+
+form.onsubmit = function(e) {
+  e.preventDefault();
+  const fileInput = document.getElementById('modelFile');
+  const file = fileInput.files[0];
+  if (file) {
+    const li = document.createElement('li');
+    li.textContent = file.name;
+    list.appendChild(li);
+    alert('Modelo subido: ' + file.name);
+  }
+};
+</script>
+</body>
+</html>
